@@ -285,13 +285,26 @@ document.body.style.backgroundColor = color;
 /* 🖼 صور */
 function setImage(img){
 document.body.style.backgroundImage = "url('" + img + "')";
+
 }
 
 /* ↩ افتراضي */
 function resetBg(){
-document.body.style.backgroundImage = "url('bg1.jpg')";
+document.body.style.backgroundImage = "url('stitch.jpg')";
+}
+function setImage(img) {
+  // تعيين مسار الصورة كخلفية
+  document.body.style.backgroundImage = `url('${img}')`;
+  
+  // التأكد من أن الصورة تملأ الخلفية بشكل جيد (النصيحة الإضافية)
+  document.body.style.backgroundSize = "cover";
+  
+  // إضافات اختيارية لضمان ثبات وتوسط الخلفية
+  document.body.style.backgroundPosition = "center";
+  document.body.style.backgroundRepeat = "no-repeat";
 }
 
+    
 </script>
 
 </body>
