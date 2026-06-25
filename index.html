@@ -11,38 +11,56 @@
 
 body{
     background-color:#ffe6f0;
+
+    /* 🎯 صورة افتراضية */
+    background-image:url("bg1.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
     font-family: Arial;
     text-align:center;
+    transition:0.5s;
 }
 
-h1,h2{
-    color:#b24b6b;
-}
-
-img{
+/* 🔐 تسجيل الدخول */
+#loginBox{
+    width:300px;
+    margin:80px auto;
+    background:white;
+    padding:20px;
     border-radius:20px;
-}
-
-hr{
-    margin:30px;
+    box-shadow:0 0 10px #aaa;
 }
 
 input{
     padding:8px;
     border-radius:10px;
     border:1px solid #d99aaa;
+    width:90%;
+    margin:10px 0;
 }
 
 button{
     background:#d99aaa;
     color:white;
     border:none;
-    padding:10px 25px;
+    padding:10px 20px;
     border-radius:15px;
     cursor:pointer;
 }
 
+/* الموقع مخفي */
+#site{
+    display:none;
+}
 
+h1,h2{
+    color:#b24b6b;
+}
+
+/* مربعات */
 .box{
     background:#fff8fb;
     border:2px solid #d99aaa;
@@ -52,7 +70,6 @@ button{
     width:80%;
     line-height:2;
 }
-
 
 table{
     width:80%;
@@ -69,7 +86,7 @@ th{
     background:#f8d7e0;
 }
 
-
+/* القصيدة */
 .poem{
     background:white;
     padding:20px;
@@ -79,63 +96,82 @@ th{
     line-height:2;
 }
 
+/* 🎨 الخلفية */
+.colors{
+    margin:20px auto;
+    width:80%;
+    background:#fff8fb;
+    border:2px solid #d99aaa;
+    border-radius:20px;
+    padding:15px;
+}
+
+.colors button{
+    background:#d99aaa;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    margin:5px;
+    border-radius:15px;
+    cursor:pointer;
+}
+
+.colors button:hover{
+    transform:scale(1.05);
+}
 
 </style>
 
 </head>
 
-
 <body>
 
+<!-- 🔐 تسجيل الدخول -->
+<div id="loginBox">
 
-<h1>مرحبا 👋</h1>
+<h2>🔐 تسجيل الدخول</h2>
 
-<p>مرحبا بكم في موقعنا الأول</p>
+<input type="text" id="name" placeholder="الاسم">
+<input type="password" id="password" placeholder="الرقم السري">
 
-
-<img src="stitch.jpg" alt="stitch" style="width: 250px; height: auto;">
-    
-
-<div class="box">
-
-<h2>تسجيل الدخول</h2>
-
-<label>الاسم:</label>
-<br>
-<input type="text" id="name">
-
-<br><br>
-
-<label>الرقم السري:</label>
-<br>
-<input type="password" id="password">
-
-<br><br>
-
-<button onclick="showData()">عرض</button>
-
-<p id="result"></p>
+<button onclick="login()">دخول</button>
 
 </div>
 
+<!-- 🌐 الموقع -->
+<div id="site">
 
+<h1>مرحبا 👋</h1>
+<p>مرحبا بكم في موقعنا الأول</p>
+
+<!-- 🎨 الخلفية -->
+<div class="colors">
+
+<h2>🎨 تغيير الخلفية</h2>
+
+<button onclick="setColor('#ffe6f0')">🩷 وردي</button>
+<button onclick="setColor('#dff5e1')">💚 أخضر</button>
+<button onclick="setColor('#dbeafe')">💙 أزرق</button>
+<button onclick="setColor('#fef3c7')"> 🧡ذهبي</button>
+
+<button onclick="setImage('bg1.jpg')">🏞 صورة 1</button>
+<button onclick="setImage('bg2.jpg')">🌅 صورة 2</button>
+<button onclick="setImage('bg3.jpg')">🌌 صورة 3</button>
+
+<button onclick="resetBg()">↩ افتراضي</button>
+
+</div>
 
 <div class="box">
-
 <h2>نبذة عن المشروع</h2>
-
 <p>
 هذا المشروع في مجال العلوم الرياضية،
 ويهدف إلى عرض بعض المعلومات والذكريات الخاصة بالدفعة الأولى.
 </p>
-
 </div>
 
-
-
-
+<!-- 🌸 الإهداء -->
 <div class="box">
-
 <h2>إهداء 🌸</h2>
 
 <p>
@@ -145,44 +181,29 @@ th{
 وحالت بهم الظروف دون إكمال المسيرة.
 </p>
 
-
 <p>
 يارب أن تفتح لهم أبواب الخير،
 وأن تعوضهم عن كل تعب،
 وترزقهم نجاحًا يفوق ما تمنوا.
 </p>
-
-
 </div>
 
-
-
-
+<!-- 🌸 الشكر -->
 <div class="box">
-
 <h2>شكر وتقدير 🌸</h2>
-
 <p>
-كل الشكر لكل من دعمني في مشروع تصميم الموقع الإلكتروني،
-وشكر خاص للدكتور محمد الجيميعابي.
+كل الشكر لكل من دعمني في مشروع تصميم الموقع الإلكتروني.
 </p>
-
 </div>
-
-
-
 
 <h2>أعضاء الدفعة</h2>
 
-
 <table>
-
 <tr>
 <th>الاسم</th>
 <th>التخصص</th>
-<th>المستوى التعليمي</th>
+<th>المستوى</th>
 </tr>
-
 
 <tr>
 <td>فدوى</td>
@@ -190,70 +211,45 @@ th{
 <td>ف7</td>
 </tr>
 
-
 <tr>
 <td>عبدالماجد</td>
 <td>رياضيات وحاسوب</td>
 <td>ف7</td>
 </tr>
 
-
 <tr>
 <td>ميمونه</td>
 <td>إحصاء</td>
 <td>ف7</td>
-</tr>    
+</tr>
 
-    
 <tr>
 <td>نعمات</td>
 <td>رياضيات</td>
 <td>ف7</td>
 </tr>
 
-
 </table>
 
-
-
-
+<!-- 📜 القصيدة -->
 <div class="poem">
-
 
 <h2>قصيدة لعلوم الرياضيات</h2>
 
-
 <p>
+يا طالبَ العلمِ يا نجمًا تألّقَ في السما<br>
+تمضي بعزمٍ لا يلينُ ولا ينامْ<br><br>
 
-يا طالبَ العلمِ يا نجمًا تألّقَ في السما
-<br>
+في عالمِ الأرقامِ تبني فكرةً<br>
+وتخطُّ بالمنطقِ طريقَك للأمامْ<br><br>
 
-تمضي بعزمٍ لا يلينُ ولا ينامْ
-
-<br>
-
-في عالمِ الأرقامِ تبني فكرةً
-
-<br>
-
-وتخطُّ بالمنطقِ طريقَك للأمامْ
-
-<br>
-
-رياضياتُنا سرُّ العلومِ ونورها
-
-<br>
-
+رياضياتُنا سرُّ العلومِ ونورها<br>
 فيها الجمالُ وفي المعادلاتِ نظامْ
-
 </p>
-
 
 </div>
 
-
-
-
+<!-- 🌸 الخاتمة -->
 <div class="box">
 
 <h2>الخاتمة</h2>
@@ -261,41 +257,41 @@ th{
 <p>
 في الختام أشكر كل من قرأ هذا المشروع،
 وأتمنى أن يكون مفيدًا.
-<br>
+<br><br>
 وشكرًا لكم.
 </p>
 
+</div>
+
+<p>إعداد الطالبة: فدوى  صالح موسى </p>
 
 </div>
 
-
-
-<p>
-إعداد الطالبة: فدوى صالح
-</p>
-
-
-
-
 <script>
 
-function showData(){
+/* 🔐 تسجيل دخول بدون شرط */
+function login(){
+document.getElementById("loginBox").style.display = "none";
+document.getElementById("site").style.display = "block";
+}
 
-let name=document.getElementById("name").value;
+/* 🎨 ألوان */
+function setColor(color){
+document.body.style.backgroundImage = "none";
+document.body.style.backgroundColor = color;
+}
 
-let pass=document.getElementById("password").value;
+/* 🖼 صور */
+function setImage(img){
+document.body.style.backgroundImage = "url('" + img + "')";
+}
 
-
-document.getElementById("result").innerHTML=
-"الاسم: "+name+
-"<br> الرقم السري: "+pass;
-
+/* ↩ افتراضي */
+function resetBg(){
+document.body.style.backgroundImage = "url('bg1.jpg')";
 }
 
 </script>
 
-
-
 </body>
-
 </html>
